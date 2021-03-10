@@ -40,23 +40,25 @@ public struct Heap<Element: Equatable> {
     In an random access data structure such as an array, that same operation is just O(1)
    */
    
+   //O(1)
    public func peek() -> Element? {
       return elements.first
    }
    
-   func leftChildIndex(ofParentAt index:Int) -> Int {
+   private func leftChildIndex(ofParentAt index:Int) -> Int {
       return (2 * index) + 1
    }
    
-   func rightChildIndex(ofParentAt index:Int) -> Int {
+   private func rightChildIndex(ofParentAt index:Int) -> Int {
       return (2 * index) + 2
    }
    
-   func parentIndex(ofChildAt index:Int) -> Int {
+   private func parentIndex(ofChildAt index:Int) -> Int {
       return (index - 1) / 2
    }
    
    //MARK: - Remove
+   //O(log n)
    public mutating func remove() -> Element? {
       guard !isEmpty else {
          return nil
@@ -123,7 +125,7 @@ public struct Heap<Element: Equatable> {
    }
    
    //MARK: - Remove
-   
+   //O(log n)
    public mutating func remove(at index:Int) -> Element? {
       guard index < elements.count else {
          return nil
